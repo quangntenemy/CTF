@@ -37,7 +37,7 @@ public class CustomOIS
   public CustomOIS(ServletInputStream is) throws IOException {
     super(is);
   }
-  
+  // Modified input to ObjectStreamClass for testing locally
   public Class<?> resolveClass(ObjectStreamClass des) throws IOException, ClassNotFoundException
   {
     if (!Arrays.asList(whitelist).contains(des.getName())) {
