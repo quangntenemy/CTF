@@ -15,12 +15,12 @@ After decompiling the classes and inspecting them, here are the bits of informat
 # Solution
 
 Deserialization vulnerabilities have been used a lot recently in CTFs, however they are mostly in Python (probably due to the fact that many players use Python nowadays). That doesn't mean Java vulnerabilities have not been researched. In fact, there have been many publications about them:
-* [OWASP - Deserialization of untrusted data] (https://www.owasp.org/index.php/Deserialization_of_untrusted_data)
-* [What Do WebLogic, WebSphere, JBoss, Jenkins, OpenNMS, and Your Application Have in Common? This Vulnerability.] (https://foxglovesecurity.com/2015/11/06/what-do-weblogic-websphere-jboss-jenkins-opennms-and-your-application-have-in-common-this-vulnerability/)
-* [Blind Java Deserialization Vulnerability - Commons Gadgets] (https://deadcode.me/blog/2016/09/02/Blind-Java-Deserialization-Commons-Gadgets.html)
-* [ysoserial - A proof-of-concept tool for generating payloads that exploit unsafe Java object deserialization.] (https://github.com/frohoff/ysoserial)
+* [OWASP - Deserialization of untrusted data](https://www.owasp.org/index.php/Deserialization_of_untrusted_data)
+* [What Do WebLogic, WebSphere, JBoss, Jenkins, OpenNMS, and Your Application Have in Common? This Vulnerability.](https://foxglovesecurity.com/2015/11/06/what-do-weblogic-websphere-jboss-jenkins-opennms-and-your-application-have-in-common-this-vulnerability/)
+* [Blind Java Deserialization Vulnerability - Commons Gadgets](https://deadcode.me/blog/2016/09/02/Blind-Java-Deserialization-Commons-Gadgets.html)
+* [ysoserial - A proof-of-concept tool for generating payloads that exploit unsafe Java object deserialization.](https://github.com/frohoff/ysoserial)
 
-Now it's clear what to do. Although the description is a bit misleading, [CommonsCollections5] (https://github.com/frohoff/ysoserial/blob/master/src/main/java/ysoserial/payloads/CommonsCollections5.java) can be used to build the gadget chain, something like this (the methods might be wrong, you need some debugging to get it right, but it doesn't matter even the chain in ysoserial comments is wrong too and you don't really need to care):
+Now it's clear what to do. Although the description is a bit misleading, [CommonsCollections5](https://github.com/frohoff/ysoserial/blob/master/src/main/java/ysoserial/payloads/CommonsCollections5.java) can be used to build the gadget chain, something like this (the methods might be wrong, you need some debugging to get it right, but it doesn't matter even the chain in ysoserial comments is wrong too and you don't really need to care):
 
 ```
 ObjectInputStream.readObject()
@@ -37,7 +37,7 @@ ObjectInputStream.readObject()
             Flag.getFlag()
 ```
 
-Full code to generate the payload: [FlagWriter.java] (FlagWriter.java)
+Full code to generate the payload: [FlagWriter.java](FlagWriter.java)
 
 Now just send the payload to the server and the flag is thrown in exception:
 ```
@@ -99,5 +99,5 @@ Caused by: java.lang.Exception: TMCTF{15nuck9astTheF1agMarsha12day}
         ... 46 more
 ```
 
-*Flag* is *TMCTF{15nuck9astTheF1agMarsha12day}*
+**Flag** is **TMCTF{15nuck9astTheF1agMarsha12day}**
 
