@@ -4,7 +4,7 @@ The flag marshal has falsely imprisoned a flag for being a deserial killer. Your
 
 # Analysis
 
-You are given a Java servlet that receives data sent via POST request, deserializes it and converts to a Person object. However, sending the data normally won't get you the flag. You need to find a way around that to get the flag (from the Flag class)
+You are given a Java servlet that receives data sent via POST request, deserializes it and converts to a Person object. However, sending the data normally won't get you the flag. You need to find a way around that to get the flag (from the [Flag class](Flag.java))
 
 After decompiling the classes and inspecting them, here are the bits of information you need to solve the challenge:
 * If there is an error in deserialization, the exception is thrown back to the client
@@ -36,7 +36,7 @@ ObjectInputStream.readObject()
           Method.invoke()
             Flag.getFlag()
 ```
-*Some of the method names might be wrong, but it doesn't matter - you get the idea*
+*(Some of the method names might be wrong, but it doesn't matter - you get the idea)*
 
 Full code to generate the payload: [FlagWriter.java](FlagWriter.java)
 
