@@ -20,7 +20,7 @@ Deserialization vulnerabilities have been used a lot recently in CTFs, however t
 * [Blind Java Deserialization Vulnerability - Commons Gadgets](https://deadcode.me/blog/2016/09/02/Blind-Java-Deserialization-Commons-Gadgets.html)
 * [ysoserial - A proof-of-concept tool for generating payloads that exploit unsafe Java object deserialization.](https://github.com/frohoff/ysoserial)
 
-Now it's clear what to do. Although the description is a bit misleading, [ysoserial's CommonsCollections5](https://github.com/frohoff/ysoserial/blob/master/src/main/java/ysoserial/payloads/CommonsCollections5.java) can be used to build the gadget chain, something like this (the methods might be wrong, you need some debugging to get it right, but it doesn't matter even the chain in ysoserial comments is wrong too and you don't really need to care):
+Now it's clear what to do. Although the description is a bit misleading, [ysoserial's CommonsCollections5](https://github.com/frohoff/ysoserial/blob/master/src/main/java/ysoserial/payloads/CommonsCollections5.java) can be used to build the gadget chain, something like this:
 
 ```
 ObjectInputStream.readObject()
@@ -36,6 +36,7 @@ ObjectInputStream.readObject()
           Method.invoke()
             Flag.getFlag()
 ```
+*Some of the method names might be wrong, but it doesn't matter - you get the idea*
 
 Full code to generate the payload: [FlagWriter.java](FlagWriter.java)
 
@@ -99,5 +100,5 @@ Caused by: java.lang.Exception: TMCTF{15nuck9astTheF1agMarsha12day}
         ... 46 more
 ```
 
-**Flag** is **TMCTF{15nuck9astTheF1agMarsha12day}**
+Flag is **TMCTF{15nuck9astTheF1agMarsha12day}**
 
